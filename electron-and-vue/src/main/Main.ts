@@ -1,13 +1,11 @@
-import path from "path";
-import { app, BrowserWindow } from "electron";
+import path from 'path'
+import { app, BrowserWindow } from 'electron'
 
-const HOME_URL: string = path.normalize(`${__dirname}/../.`);
+const HOME_URL: string = path.normalize(`${__dirname}/../.`)
 const BUILT_HTML_PATH: string =
-  process.env.NODE_ENV === "production"
-    ? `file://${HOME_URL}/renderer/index.html#/`
-    : "http://localhost:8080/#/";
+  process.env.NODE_ENV === 'production' ? `file://${HOME_URL}/renderer/index.html#/` : 'http://localhost:8080/#/'
 
-app.on("ready", () => {
+app.on('ready', () => {
   const browserWindow = new BrowserWindow({
     width: 1200,
     height: 720,
@@ -16,14 +14,14 @@ app.on("ready", () => {
     useContentSize: true,
     fullscreenable: true,
     show: false,
-    titleBarStyle: "hiddenInset",
-    title: "Vue on Electron Boilerplate",
+    titleBarStyle: 'hiddenInset',
+    title: 'Vue on Electron Boilerplate',
     webPreferences: { scrollBounce: false }
-  });
+  })
 
-  browserWindow.loadURL(BUILT_HTML_PATH);
+  browserWindow.loadURL(BUILT_HTML_PATH)
 
-  browserWindow.on("ready-to-show", () => {
-    browserWindow.show();
-  });
-});
+  browserWindow.on('ready-to-show', () => {
+    browserWindow.show()
+  })
+})

@@ -1,9 +1,9 @@
-import { ipcMain } from "electron";
+import { ipcMain } from 'electron'
 
 const ExampleService = {
-  execute() {
-    ipcMain.once("example", () => {});
+  execute(): void {
+    ipcMain.once('example', (): void => {})
   }
-};
+}
 
-export default ExampleService;
+export default ExampleService
