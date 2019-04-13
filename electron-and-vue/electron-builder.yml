@@ -1,0 +1,31 @@
+appId: me.yuyasvx.example-vue-electron
+copyright: "Copyright © 2019 yuyasvx.me"
+productName: Example App
+forceCodeSigning: false
+artifactName: "${productName}-${os}-${arch}-${version}.${ext}"
+directories:
+  output: "release"
+files:
+  - "dist/**/*"
+asar: true
+# compression: maximum
+mac:
+  # category: public.app-category.music
+  darkModeSupport: true
+  target: [zip] # default, dmg, mas, mas-dev, pkg, 7z, zip, tar.xz, tar.lz, tar.gz, tar.bz2, dir
+  # electronLanguages: ["ja", "en"]
+#dmg:
+#  background: "build/appdmg.png"
+#  icon: "build/icon.icns"
+#  iconSize: 128
+#  contents:
+#    - x: 532
+#      y: 249
+#      type: link
+#      path: /Applications
+#    - x: 281
+#      y: 249
+#      type: file
+
+#npmRebuild: true
+#nodeGypRebuild: false
