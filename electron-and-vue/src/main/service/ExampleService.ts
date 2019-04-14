@@ -1,8 +1,8 @@
 import { ipcMain } from 'electron'
 
 const ExampleService = {
-  execute(): void {
-    ipcMain.once('example', (): void => {})
+  execute() {
+    ipcMain.once('example', () => {})
   }
 }
 

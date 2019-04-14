@@ -8,15 +8,16 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
+    'standard',
+    'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/essential',
-    '@vue/prettier',
+    // '@vue/prettier',
     '@vue/typescript'
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    // TypeScript recommended
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/explicit-function-return-type': ['warn', { allowExpressions: true }],
     '@typescript-eslint/member-delimiter-style': [
@@ -28,7 +29,17 @@ module.exports = {
         }
       }
     ],
-    'import/no-unresolved': 'off'
+    '@typescript-eslint/interface-name-prefix': 'off',
+    // https://github.com/typescript-eslint/typescript-eslint/issues/422
+    '@typescript-eslint/explicit-member-accessibility': 'off',
+    // '@typescript-eslint/explicit-member-accessibility': [
+    //   'error',
+    //   { accessibility: 'explicit', overrides: { constructor: 'off' } }
+    // ],
+    'import/no-unresolved': 'off',
+    'no-var': 'error',
+    'prefer-const': 'warn',
+    'prefer-template': 'warn'
   },
   parserOptions: {
     parser: '@typescript-eslint/parser'
