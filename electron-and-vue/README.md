@@ -29,6 +29,11 @@ npm run serve
 npm run dev:main
 ```
 
+### Run your Electron application for development
+```
+npm run electron
+```
+
 ### Compiles Vue components and minifies for production
 ```
 npm run build

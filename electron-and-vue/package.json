@@ -10,7 +10,7 @@
     "build:main": "NODE_ENV=production webpack && cp -r ./src/assets ./dist",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "run": "electron dist/main/main.js",
+    "electron": "electron dist/main/main.js",
     "clean:dist": "rm -rf ./dist",
     "clean:release": "rm -rf ./release",
     "clean:all": "npm run clean:dist & npm run clean:release",
