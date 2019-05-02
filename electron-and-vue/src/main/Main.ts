@@ -10,7 +10,7 @@ const conf: WindowConfig = {
   name: 'main-window',
   displayName: 'Vue Boilerplate',
   singleton: true,
-  keepAlive: true,
+  keepAlive: false,
   primary: true,
   url: BUILT_HTML_PATH,
   option: {
@@ -21,9 +21,10 @@ const conf: WindowConfig = {
     useContentSize: true,
     fullscreenable: true,
     show: false,
-    titleBarStyle: 'hiddenInset',
+    titleBarStyle: 'default',
     title: 'Vue on Electron Boilerplate',
-    webPreferences: { scrollBounce: false, nodeIntegration: true }
+    webPreferences: { scrollBounce: false, nodeIntegration: true },
+    darkTheme: true
   }
 }
 

@@ -5,13 +5,9 @@ import AppWindow from './AppWindow'
 import appModule from './resource/AppModule'
 import state from './state'
 
-/** isDestroyedフラグの立ったAppWindowを全て排除する */
-const clearGarbage = (list: AppWindow[]): AppWindow[] => {
-  return list.filter(val => !val.destroyed)
-}
-
 /**
  * 読み込み済みWindowConfigからウィンドウを作る。
+ * URLが指定された場合は自動で読み込む。autoVisibleが指定された場合は、画面描画が出来た時自動で表示する。
  * シングルトンなウィンドウの場合は、すでにインスタンスがあるか確認して、存在しない場合のみ作り、
  * 存在する場合はフォーカスする。
  * @param controller コントローラオブジェクト
@@ -47,7 +43,7 @@ export const activateWindow = (controller: WindowController): AppWindow => {
     })
   }
   window.on('closed', () => {
-    state.createdWindows = clearGarbage(state.createdWindows)
+    state.clearGarbage()
   })
   const appWindow = new AppWindow({ controller, instance: window })
   state.createdWindows.push(appWindow)
@@ -80,6 +76,13 @@ const activatePrimaryWindow = (): void => {
   state.activated = true
 }
 
+/**
+ * 最初はこれを使う。configから必要に応じてBrowserWindowを生成してウィンドウを表示する。
+ * configは読み込むとWindowControllerに変化し、WindowManagerの管理対象になる。
+ * 同じnameのWindowControllerがすでに存在する場合はそのWindowControllerからウィンドウを生成する。
+ * @param config WindowConfigオブジェクト
+ * @returns BrowserWindowとWindowController
+ */
 export const bootWindow = (config: WindowConfig): AppWindow => {
   const existController = state.configuredWindows.find(w => w.name === config.name)
   if (existController != null) {

@@ -1,6 +1,9 @@
 import { BrowserWindow } from 'electron'
 import WindowController from './WindowController'
 
+/**
+ * 生成済みのBrowserWindowと、生成元になったWindowControllerの入れ物
+ */
 export default class AppWindow {
   controller: WindowController
   instance: BrowserWindow

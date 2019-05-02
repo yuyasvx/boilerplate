@@ -23,12 +23,19 @@ class State implements IState {
   }
 
   /**
-   * ※単体テスト実行用
+   * ※単体テスト実行用 stateの内容を全部消す
    */
   public reset(): void {
     this.configuredWindows = []
     this.createdWindows = []
     this.activated = false
+  }
+
+  /**
+   * isDestroyedフラグの立ったAppWindowを全て排除する
+   */
+  public clearGarbage(): void {
+    this.createdWindows = this.createdWindows.filter(w => !w.destroyed)
   }
 }
 
