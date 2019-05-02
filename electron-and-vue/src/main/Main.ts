@@ -1,12 +1,19 @@
 import path from 'path'
-import { app, BrowserWindow } from 'electron'
+import { app, ipcMain } from 'electron'
+import { bootWindow } from './lib/window-manager'
+import WindowConfig from './lib/window-manager/interface/WindowConfig'
 
 const HOME_URL: string = path.normalize(`${__dirname}/../.`)
 const BUILT_HTML_PATH: string =
   process.env.NODE_ENV === 'production' ? `file://${HOME_URL}/renderer/index.html#/` : 'http://localhost:8080/#/'
-
-app.on('ready', () => {
-  const browserWindow = new BrowserWindow({
+const conf: WindowConfig = {
+  name: 'main-window',
+  displayName: 'Vue Boilerplate',
+  singleton: true,
+  keepAlive: true,
+  primary: true,
+  url: BUILT_HTML_PATH,
+  option: {
     width: 1200,
     height: 720,
     minWidth: 1200,
@@ -16,12 +23,20 @@ app.on('ready', () => {
     show: false,
     titleBarStyle: 'hiddenInset',
     title: 'Vue on Electron Boilerplate',
-    webPreferences: { scrollBounce: false }
+    webPreferences: { scrollBounce: false, nodeIntegration: true }
+  }
+}
+
+app.on('ready', () => {
+  ipcMain.on('ping', (event: Electron.Event) => {
+    event.sender.send('pong', 'pong')
   })
 
-  browserWindow.loadURL(BUILT_HTML_PATH)
+  bootWindow(conf)
+})
 
-  browserWindow.on('ready-to-show', () => {
-    browserWindow.show()
-  })
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
 })

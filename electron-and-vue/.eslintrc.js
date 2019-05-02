@@ -39,7 +39,8 @@ module.exports = {
     'import/no-unresolved': 'off',
     'no-var': 'error',
     'prefer-const': 'warn',
-    'prefer-template': 'warn'
+    'prefer-template': 'warn',
+    'curly': 'warn'
   },
   parserOptions: {
     parser: '@typescript-eslint/parser'
