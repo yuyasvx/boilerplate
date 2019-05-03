@@ -1,4 +1,4 @@
-import { BrowserWindowConstructorOptions } from 'electron'
+import { BrowserWindowConstructorOptions, Menu } from 'electron'
 
 export default interface WindowConfig {
   /** コンフィグの識別名。 */
@@ -16,4 +16,6 @@ export default interface WindowConfig {
   autoVisible?: boolean
   /** (Macのみ)ウィンドウがゼロの状態でアプリに切り替えた時、最初に表示するか */
   primary?: boolean
+  /** (Windowsのみ)メニューバーとしてセットしたいMenuオブジェクト */
+  menuBar?: Menu
 }

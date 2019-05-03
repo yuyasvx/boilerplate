@@ -83,18 +83,24 @@ describe('boot window', () => {
     expect(appMock.on.mock.calls[0][0]).toBe('activate')
   })
 
-  it('retrieves exist controller', () => {
-    const testConfig: WindowConfig = {
+  it('overwrites exist controller', () => {
+    const newConfig: WindowConfig = {
+      name: 'test',
+      displayName: 'test2',
+      url: 'hoge2',
+      option: {}
+    }
+    const oldController = new WindowController({
       name: 'test',
       displayName: 'test',
       url: 'hoge',
       option: {}
-    }
-    const existController = new WindowController(testConfig)
+    })
+    state.configuredWindows.push(oldController)
 
-    jest.spyOn(Array.prototype, 'find').mockImplementationOnce(() => existController)
-
-    const result = WindowManager.bootWindow(testConfig)
-    expect(result.controller).toBe(existController)
+    const result = WindowManager.bootWindow(newConfig)
+    expect(result.controller.displayName).toBe('test2')
+    expect(state.configuredWindows.length).toBe(1)
+    expect(state.configuredWindows[0].displayName).toBe('test2')
   })
 })

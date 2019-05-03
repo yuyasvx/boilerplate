@@ -42,6 +42,9 @@ export const activateWindow = (controller: WindowController): AppWindow => {
       window.removeListener('close', keepAliveEvent)
     })
   }
+  if (controller.menuBar && process.platform !== 'darwin') {
+    window.setMenu(controller.menuBar)
+  }
   window.on('closed', () => {
     state.clearGarbage()
   })
@@ -79,15 +82,11 @@ const activatePrimaryWindow = (): void => {
 /**
  * 最初はこれを使う。configから必要に応じてBrowserWindowを生成してウィンドウを表示する。
  * configは読み込むとWindowControllerに変化し、WindowManagerの管理対象になる。
- * 同じnameのWindowControllerがすでに存在する場合はそのWindowControllerからウィンドウを生成する。
  * @param config WindowConfigオブジェクト
  * @returns BrowserWindowとWindowController
  */
 export const bootWindow = (config: WindowConfig): AppWindow => {
-  const existController = state.configuredWindows.find(w => w.name === config.name)
-  if (existController != null) {
-    return activateWindow(existController)
-  }
+  state.configuredWindows = state.configuredWindows.filter(w => w.name !== config.name)
   const controller = new WindowController(config)
   state.configuredWindows.push(controller)
   activatePrimaryWindow()
