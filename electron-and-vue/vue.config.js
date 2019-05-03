@@ -2,18 +2,27 @@ module.exports = {
   lintOnSave: false,
   publicPath: './',
   outputDir: 'dist/renderer',
-  chainWebpack: config => {
-    // webpack ビルドの設定を上書き(https://forum.vuejs.org/t/how-can-i-create-two-separate-bundles-with-vue-cli-3/30353)
-    // 詳細は：https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-
-    // デフォルトのエントリーポイントの定義を消す
-    config.entryPoints.delete('app')
-
-    // 新しいパスで定義し直す
-    config
-      .entry('app')
-      .add('./src/renderer/main.ts')
-      .end()
+  pages: {
+    index: {
+      // entry for the page
+      entry: 'src/renderer/apps/main/Main.ts',
+      // the source template
+      template: 'public/index.html',
+      // output as dist/index.html
+      filename: 'index.html',
+      // when using title option,
+      // template title tag needs to be <title><%= htmlWebpackPlugin.options.title %></title>
+      title: 'Index Page'
+      // chunks to include on this page, by default includes
+      // extracted common chunks and vendor chunks.
+      // chunks: ['chunk-vendors', 'chunk-common', 'index']
+    },
+    about: {
+      entry: 'src/renderer/apps/about/About.ts',
+      template: 'public/index.html',
+      filename: 'about.html',
+      title: 'About'
+    }
   },
   productionSourceMap: false,
   configureWebpack: {
