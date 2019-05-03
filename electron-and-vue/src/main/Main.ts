@@ -1,7 +1,8 @@
 import path from 'path'
-import { app, ipcMain } from 'electron'
+import { app, ipcMain, Menu } from 'electron'
 import { bootWindow } from './lib/window-manager'
 import WindowConfig from './lib/window-manager/interface/WindowConfig'
+import appMenuBar from '@/main/menu/app-menubar'
 
 const HOME_URL: string = path.normalize(`${__dirname}/../.`)
 const BUILT_HTML_PATH: string =
@@ -23,12 +24,12 @@ const conf: WindowConfig = {
     show: false,
     titleBarStyle: 'default',
     title: 'Vue on Electron Boilerplate',
-    webPreferences: { scrollBounce: false, nodeIntegration: true },
-    darkTheme: true
+    webPreferences: { scrollBounce: false, nodeIntegration: true }
   }
 }
 
 app.on('ready', () => {
+  Menu.setApplicationMenu(appMenuBar)
   ipcMain.on('ping', (event: Electron.Event) => {
     event.sender.send('pong', 'pong')
   })
