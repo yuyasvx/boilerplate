@@ -1,7 +1,7 @@
 import { MenuItemConstructorOptions } from 'electron'
 import WindowConfig from '@/main/lib/window-manager/interface/WindowConfig'
 import path from 'path'
-import WindowManager, { bootWindow } from '@/main/lib/window-manager'
+import { bootWindow } from '@/main/lib/window-manager'
 
 const appMenu: MenuItemConstructorOptions = {
   label: 'Example App Name',
