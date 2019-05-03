@@ -24,14 +24,14 @@ npm install
 npm run serve
 ```
 
-### Compiles main source and hot-reloads Electron app for development
-```
-npm run serve:main
-```
-
 ### Compiles Vue components and minifies for production
 ```
 npm run build
+```
+
+### Compiles main source for development
+```
+npm run dev:main
 ```
 
 ### Compiles main source for production
@@ -39,9 +39,9 @@ npm run build
 npm run build:main
 ```
 
-### Run your tests
+### Run Electron app for development
 ```
-npm run test
+npm run electron
 ```
 
 ### Lints and fixes files
