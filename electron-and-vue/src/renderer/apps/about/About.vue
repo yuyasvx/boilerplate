@@ -1,8 +1,28 @@
 <template>
   <div id="app">
-    <router-view />
+    <window-frame :option="option" title="electron-and-vue">
+      <router-view />
+    </window-frame>
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import WindowFrame from '@/renderer/components/WindowFrame.vue'
+
+@Component({
+  components: {
+    WindowFrame
+  }
+})
+export default class About extends Vue {
+  option = {
+    touchBarSupport: false,
+    os: 'mac',
+    titleBarStyle: 'default'
+  }
+}
+</script>
 
 <style lang="scss">
 body {

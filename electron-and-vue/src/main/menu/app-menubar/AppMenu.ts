@@ -26,7 +26,7 @@ const appMenu: MenuItemConstructorOptions = {
             height: 320,
             useContentSize: true,
             fullscreenable: false,
-            resizable: false,
+            resizable: true,
             show: false,
             titleBarStyle: 'default',
             title: 'About',
@@ -37,6 +37,9 @@ const appMenu: MenuItemConstructorOptions = {
         }
 
         bootWindow(aboutWindowConfig)
+        // w.instance.on('ready-to-show', () => {
+        //   console.log(w.instance.getContentSize())
+        // })
       }
     },
     { type: 'separator' },

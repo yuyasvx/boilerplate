@@ -1,9 +1,10 @@
 import WindowConfig from './interface/WindowConfig'
-import { BrowserWindow } from 'electron'
+import { BrowserWindow, Event as ElectronEvent } from 'electron'
 import WindowController from './WindowController'
 import AppWindow from './AppWindow'
 import appModule from './resource/AppModule'
 import state from './state'
+import { findFirst } from 'fp-ts/lib/Array'
 
 /**
  * 読み込み済みWindowConfigからウィンドウを作る。
@@ -14,12 +15,16 @@ import state from './state'
  */
 export const activateWindow = (controller: WindowController): AppWindow => {
   const app = appModule()
+  // let maybeAppWindow: Option<AppWindow> = none
 
   if (controller.singleton) {
-    const created = state.createdWindows.find(w => w.controllerName === controller.name)
-    if (created != null) {
-      created.instance.show()
-      return created
+    const maybeAppWindow = findFirst((w: AppWindow) => w.controllerName === controller.name)(state.createdWindows)
+    maybeAppWindow.map(appWindow => {
+      appWindow.instance.show()
+    })
+    const nullable = maybeAppWindow.toNullable()
+    if (nullable != null) {
+      return nullable
     }
   }
 
@@ -33,7 +38,7 @@ export const activateWindow = (controller: WindowController): AppWindow => {
     })
   }
   if (controller.keepAlive) {
-    const keepAliveEvent = (event: Electron.Event): void => {
+    const keepAliveEvent = (event: ElectronEvent): void => {
       window.hide()
       event.preventDefault()
     }
