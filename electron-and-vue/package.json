@@ -15,7 +15,7 @@
     "clean:release": "rm -rf ./release",
     "clean:all": "npm run clean:dist & npm run clean:release",
     "build:release": "npm run clean:dist && npm run build && npm run build:main",
-    "make:mac": "npm run clean:all && npm run build:release && build --mac --x64"
+    "make:mac": "npm run clean:all && npm run build:release && electron-builder --mac --x64"
   },
   "dependencies": {
     "axios": "^0.19.0",
