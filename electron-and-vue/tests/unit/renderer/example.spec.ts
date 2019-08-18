@@ -14,4 +14,9 @@ describe('HelloWorld.vue', () => {
     })
     expect(wrapper.text()).toMatch(msg)
   })
+
+  it('matches snapshot', () => {
+    const wrapper = mount(HelloWorld)
+    expect(wrapper.element).toMatchSnapshot()
+  })
 })

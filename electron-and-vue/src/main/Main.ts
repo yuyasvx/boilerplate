@@ -36,7 +36,7 @@ const vueDevToolsPath = getChromeExtensionPath('nhdogjmejiglipccpnnnanhbledajbpd
 
 app.on('ready', () => {
   Menu.setApplicationMenu(appMenuBar)
-  ipcMain.on('ping', (event: Electron.Event) => {
+  ipcMain.on('ping', (event: Electron.IpcMainEvent) => {
     event.sender.send('pong', 'pong')
   })
   readDir(vueDevToolsPath).then(files => {

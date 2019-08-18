@@ -54,7 +54,7 @@ const appMenu: MenuItemConstructorOptions = {
     },
     {
       // label: 'Hide Others',
-      role: 'hideothers'
+      role: 'hideOthers'
     },
     {
       // label: 'Unhide',

@@ -11,8 +11,8 @@ const roles: MenuItemConstructorOptions = {
     { role: 'cut' },
     { role: 'copy' },
     { role: 'paste' },
-    { role: 'pasteandmatchstyle' },
-    { role: 'selectall' },
+    { role: 'pasteAndMatchStyle' },
+    { role: 'selectAll' },
     { role: 'delete' },
 
     { type: 'separator' },
@@ -24,8 +24,8 @@ const roles: MenuItemConstructorOptions = {
     { type: 'separator' },
 
     { role: 'reload' },
-    { role: 'forcereload' },
-    { role: 'toggledevtools' },
+    { role: 'forceReload' },
+    { role: 'toggleDevTools' },
     { role: 'togglefullscreen' },
 
     { type: 'separator' },
@@ -33,10 +33,10 @@ const roles: MenuItemConstructorOptions = {
 
     { role: 'about' },
     { role: 'hide' },
-    { role: 'hideothers' },
+    { role: 'hideOthers' },
     { role: 'unhide' },
-    { role: 'startspeaking' },
-    { role: 'stopspeaking' },
+    { role: 'startSpeaking' },
+    { role: 'stopSpeaking' },
     { role: 'front' },
     { role: 'zoom' },
     // { role: 'toggletabbar' },
