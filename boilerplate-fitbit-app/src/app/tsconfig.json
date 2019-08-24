@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "typeRoots": ["@types"]
+  },
+  "include": ["**/*.ts", "*.ts", "../../node_modules/fitbit-sdk-types/types/device"],
+  "exclude": ["node_modules"]
+}
