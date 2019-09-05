@@ -13,7 +13,9 @@ export interface IState {
 
 class State implements IState {
   public activated: boolean
+
   public configuredWindows: WindowController[]
+
   public createdWindows: AppWindow[]
 
   constructor() {

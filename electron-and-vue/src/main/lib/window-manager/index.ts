@@ -4,9 +4,9 @@ import WindowController from './WindowController'
 import AppWindow from './AppWindow'
 import appModule from './resource/AppModule'
 import state from './state'
-import { pipe } from 'fp-ts/lib/pipeable'
+import { pipe, pipeable } from 'fp-ts/lib/pipeable'
 import { findFirst } from 'fp-ts/lib/Array'
-import * as Option from 'fp-ts/lib/Option'
+import { option, toNullable } from 'fp-ts/lib/Option'
 
 /**
  * 読み込み済みWindowConfigからウィンドウを作る。
@@ -19,11 +19,12 @@ export const activateWindow = (controller: WindowController): AppWindow => {
   const app = appModule()
   // let maybeAppWindow: Option<AppWindow> = none
 
+  const op = pipeable(option)
   if (controller.singleton) {
-    const maybeAppWindow = Option.toNullable(
+    const maybeAppWindow = toNullable(
       pipe(
         findFirst((w: AppWindow) => w.controllerName === controller.name)(state.createdWindows),
-        Option.map(appWindow => {
+        op.map(appWindow => {
           appWindow.instance.show()
           return appWindow
         })

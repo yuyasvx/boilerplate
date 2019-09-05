@@ -1,12 +1,12 @@
 <template>
   <div class="vue-window-frame">
-    <div class="vue-window-frame__title-bar" :style="createStyle()" v-if="option.titleBarStyle !== 'hidden'">
-      <div class="vue-window-frame__title-bar--head" :style="titleBarHeadStyle"></div>
+    <div v-if="option.titleBarStyle !== 'hidden'" class="vue-window-frame__title-bar" :style="createStyle()">
+      <div class="vue-window-frame__title-bar--head" :style="titleBarHeadStyle" />
       <div class="vue-window-frame__title-bar--content" :style="titleBarContentStyle">
         <span ref="titleBarContent">{{ title }}</span>
       </div>
-      <div class="vue-window-frame__title-bar--tail"></div>
-      <div class="vue-window-frame__title-bar--caption"></div>
+      <div class="vue-window-frame__title-bar--tail" />
+      <div class="vue-window-frame__title-bar--caption" />
     </div>
     <slot />
   </div>

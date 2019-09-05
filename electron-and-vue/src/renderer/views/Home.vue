@@ -26,7 +26,8 @@ export default class Home extends Vue {
   }
 
   mounted() {
-    ipcRenderer.on('pong', (event: Electron.Event, data: unknown) => {
+    ipcRenderer.on('pong', () => {
+      // event: Electron.Event, data: unknown
       // console.log(data)
     })
     ipcRenderer.send('ping', 'ping')
