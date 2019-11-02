@@ -18,13 +18,15 @@
     "clean:release": "rm -rf ./release",
     "clean:all": "npm run clean:dist & npm run clean:release",
     "build:release": "npm run clean:dist && npm run build && npm run build:main",
-    "make:mac": "npm run clean:all && npm run build:release && electron-builder --mac --x64"
+    "make:mac": "npm run clean:all && npm run build:release && electron-builder --mac --x64",
+    "postinstall": "electron-rebuild -f -w sqlite3"
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "electron-store": "^4.0.0",
+    "electron-store": "^5.0.0",
     "fp-ts": "^2.0.0",
     "reflect-metadata": "^0.1.13",
+    "sqlite3": "^4.1.0",
     "vue": "^2.6.6",
     "vue-class-component": "^7.0.0",
     "vue-meta": "^2.0.0",
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
+    "@types/sqlite3": "^3.1.5",
     "@vue/cli-plugin-eslint": "^3.5.0",
     "@vue/cli-plugin-typescript": "^3.5.0",
     "@vue/cli-plugin-unit-jest": "^3.5.0",
@@ -44,8 +47,8 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.1",
     "electron": "^6.0.0",
-    "electron-builder": "^21.0.0",
-    "electron-rebuild": "^1.8.4",
+    "electron-builder": "^22.0.0",
+    "electron-rebuild": "^1.8.6",
     "eslint": "^6.0.0",
     "eslint-config-standard": "^13.0.0",
     "eslint-plugin-import": "^2.17.1",
