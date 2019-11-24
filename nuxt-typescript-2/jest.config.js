@@ -22,6 +22,7 @@ module.exports = {
     '<rootDir>/pages/**/*.vue',
     '<rootDir>/plugins/**/*.(ts|js)',
     '<rootDir>/store/**/*.(ts|js)',
-    '<rootDir>/assets/**/*.(ts|js)'
+    '<rootDir>/assets/**/*.(ts|js)',
+    '<rootDir>/src/**/*.(ts|js)'
   ]
 }
