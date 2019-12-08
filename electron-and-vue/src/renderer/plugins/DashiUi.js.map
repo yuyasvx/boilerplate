@@ -1,0 +1,1 @@
+{"version":3,"file":"DashiUi.js","sourceRoot":"","sources":["DashiUi.ts"],"names":[],"mappings":"AAAA,OAAO,gDAAgD,CAAA;AACvD,kBAAkB;AAClB,OAAO,kDAAkD,CAAA","sourcesContent":["import '@/renderer/lib/dashi-ui-kit/style/DashiUi.scss'\n// 必要ならリセットCSSをあてる\nimport '@/renderer/lib/dashi-ui-kit/style/DashiReset.css'\n"]}
