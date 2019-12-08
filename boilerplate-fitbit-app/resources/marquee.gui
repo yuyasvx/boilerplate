@@ -1,0 +1,20 @@
+<svg>
+  <defs>
+    <!-- components -->
+    <symbol id="component-marquee">
+      <svg>
+        <mask id="marquee-mask">
+          <rect width="100%" height="100%" opacity="1" />
+        </mask>
+        <rect width="100%" height="100%" fill="white" opacity="0.3" />
+        <svg mask="#marquee-mask">
+          <g id="component-marquee-group" >
+            <text class="component-marquee-text" x="0" y="0" text-anchor="start">…</text>
+            <text class="component-marquee-text" x="$+80" y="0" text-anchor="start">…</text>
+          </g>
+        </svg>
+      </svg>
+    </symbol>
+  </defs>
+  <!-- implements -->
+</svg>
